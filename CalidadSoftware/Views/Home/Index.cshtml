@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="jumbotron">
+    <h1>Calidad de Software</h1>
+    <p class="lead">Aquí podra entrar a su cuenta para ver la lista de empleados. Para saber mas haga click aqui:</p>
+    <p>
+        <a href="home/Registrarse" class="btn btn-primary btn-lg"> Registrate! &raquo;</a>
+        <a href="home/Ingresar" class="btn btn-primary btn-lg"> Ingresa a tu cuenta! &raquo;</a>
+    </p>
+</div>
+
+<div class="container">
+    @{
+        if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+        <div class="alert alert-danger">@ViewBag.Message</div> //@ViewBag.Message
+        }
+    }
+    <form action="/Home/Login" method="post">
+        <div class="form-group">
+            <label>Ingresa tu usuario</label>
+            <input type="text" name="user" value"" />
+
+        </div>
+        <div class="form-group">
+            <label>Ingresa tu password</label>
+            <input type="text" name="password" value"" />
+
+        </div>
+        <div class="form-group">
+            <button>Iniciar Sesión</button>
+        </div>
+    </form>
+</div>

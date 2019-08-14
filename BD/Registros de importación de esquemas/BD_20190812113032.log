@@ -1,0 +1,86 @@
+12-08-2019 19:30:32	Este registro contiene información acerca de la operación de importación de esquema en el proyecto 'BD' del equipo 'DESKTOP-4S6MS41' por el usuario 'frana'.
+12-08-2019 19:30:33	Se inició la importación del esquema de la base de datos.
+12-08-2019 19:31:02	Recopilando credenciales de la base de datos
+12-08-2019 19:31:02	Recopilando opciones de base de datos
+12-08-2019 19:31:02	Recopilando la opción de configuración de ámbito de la base de datos genérica
+12-08-2019 19:31:03	Recopilando usuarios
+12-08-2019 19:31:03	Recopilando roles
+12-08-2019 19:31:03	Recopilando roles de aplicación
+12-08-2019 19:31:03	Recopilando pertenencias a roles
+12-08-2019 19:31:03	Recopilando grupos de archivos
+12-08-2019 19:31:03	Recopilando catálogos de texto completo
+12-08-2019 19:31:03	Recopilando ensamblados
+12-08-2019 19:31:03	Recopilando certificados
+12-08-2019 19:31:03	Recopilando claves asimétricas
+12-08-2019 19:31:03	Recopilando claves simétricas
+12-08-2019 19:31:03	Recopilando claves simétricas cifradas
+12-08-2019 19:31:03	Recopilando esquemas
+12-08-2019 19:31:03	Recopilando colecciones de esquemas XML
+12-08-2019 19:31:03	Recopilando tipos de datos definidos por el usuario
+12-08-2019 19:31:03	Recopilando tipos definidos por el usuario
+12-08-2019 19:31:03	Recopilando tipos de tabla
+12-08-2019 19:31:03	Recopilando claves únicas para tipos de tabla
+12-08-2019 19:31:03	Recopilando claves principales para tipos de tabla
+12-08-2019 19:31:03	Recopilando índices para tipos de tablas
+12-08-2019 19:31:03	Recopilando restricciones CHECK para tipos de tabla
+12-08-2019 19:31:03	Recopilando restricciones DEFAULT para tipos de tabla
+12-08-2019 19:31:03	Recopilando funciones de partición
+12-08-2019 19:31:03	Recopilando esquemas de partición
+12-08-2019 19:31:03	Recopilando funciones
+12-08-2019 19:31:03	Recopilando funciones cifradas
+12-08-2019 19:31:03	Recopilando agregados
+12-08-2019 19:31:03	Recopilando procedimientos
+12-08-2019 19:31:03	Recopilando procedimientos cifrados
+12-08-2019 19:31:03	Recopilando tablas
+12-08-2019 19:31:03	Recopilando claves principales
+12-08-2019 19:31:04	Recopilando restricciones UNIQUE
+12-08-2019 19:31:04	Recopilando claves externas
+12-08-2019 19:31:04	Recopilando restricciones DEFAULT
+12-08-2019 19:31:04	Recopilando restricciones CHECK
+12-08-2019 19:31:04	Recopilando vistas
+12-08-2019 19:31:04	Recopilando vistas cifradas
+12-08-2019 19:31:04	Recopilando índices
+12-08-2019 19:31:04	Recopilando estadísticas
+12-08-2019 19:31:04	Recopilando listas de palabras irrelevantes de índices de texto completo
+12-08-2019 19:31:04	Recopilando listas de propiedades de búsqueda
+12-08-2019 19:31:04	Recopilando propiedades de búsqueda
+12-08-2019 19:31:04	Recopilando índices de texto completo
+12-08-2019 19:31:04	Recopilando índices de almacenamiento de columnas
+12-08-2019 19:31:04	Recopilando índices espaciales
+12-08-2019 19:31:04	Recopilando índices XML
+12-08-2019 19:31:04	Recopilando índices XML selectivos
+12-08-2019 19:31:04	Recopilando desencadenadores cifrados
+12-08-2019 19:31:04	Recopilando desencadenadores
+12-08-2019 19:31:04	Recopilando DDL triggers cifrados y de CLR
+12-08-2019 19:31:04	Recopilando DDL triggers
+12-08-2019 19:31:04	Recopilando sinónimos
+12-08-2019 19:31:04	Recopilando valores predeterminados
+12-08-2019 19:31:04	Recopilando enlaces UDDT de restricción de datos
+12-08-2019 19:31:04	Recopilando reglas
+12-08-2019 19:31:04	Recopilando enlaces UDDT de restricción de datos
+12-08-2019 19:31:04	Recopilando tipos de mensaje
+12-08-2019 19:31:04	Recopilando colas
+12-08-2019 19:31:04	Recopilando contratos
+12-08-2019 19:31:04	Recopilando servicios
+12-08-2019 19:31:04	Recopilando notificaciones de eventos
+12-08-2019 19:31:04	Recopilando enlaces de servicio remoto
+12-08-2019 19:31:04	Recopilando prioridades de Broker
+12-08-2019 19:31:04	Recopilando firmas
+12-08-2019 19:31:04	Recopilando opciones de compresión de datos
+12-08-2019 19:31:04	Recopilando tipos de secuencia
+12-08-2019 19:31:05	Recopilando directivas de seguridad
+12-08-2019 19:31:05	Recopilar claves de cifrado de columna
+12-08-2019 19:31:05	Recopilando claves maestras de columna
+12-08-2019 19:31:05	Recopilando orígenes de datos externos
+12-08-2019 19:31:05	Recopilando formatos de archivo externos
+12-08-2019 19:31:05	Recopilando tablas externas
+12-08-2019 19:31:05	Recopilando permisos de base de datos
+12-08-2019 19:31:05	Recopilando propiedades extendidas
+12-08-2019 19:31:11	Recopilando credenciales
+12-08-2019 19:31:11	Recopilando inicios de sesión
+12-08-2019 19:31:12	Recopilando auditorías de servidor
+12-08-2019 19:31:28	Buscando elementos duplicados en el proyecto
+12-08-2019 19:31:29	Ha finalizado el procesamiento de los elementos duplicados
+12-08-2019 19:31:31	Finalizó la importación de la base de datos.
+12-08-2019 19:31:31	Se guardó un resumen de la importación en la siguiente ubicación: C:\Users\frana\source\repos\pryCalidadDeSoftware\BD\Registros de importación de esquemas\BD_20190812113032.log
+12-08-2019 19:31:31	Haga clic en Finalizar para continuar...

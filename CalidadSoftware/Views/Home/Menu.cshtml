@@ -1,0 +1,34 @@
+﻿
+@using CalidadSoftware.Controllers;
+
+@model List<Usuario>
+
+@{
+    ViewBag.Title = "Menu";
+}
+
+<h2>Menu</h2>
+
+<p>Bienvenido al menu principal. A continuación esta la lista de usuarios:</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>User</td>
+            <td>Password</td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.User</td>
+                    <td>@item.Password</td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>
+
