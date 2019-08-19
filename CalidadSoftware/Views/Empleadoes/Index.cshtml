@@ -11,7 +11,10 @@
     @Html.ActionLink("Crear Nuevo", "Create")
 </p>
 <table class="table">
+
     <tr>
+        <th>@Html.DisplayNameFor(model => model.rut_empleado)</th>
+
         <th>
             @Html.DisplayNameFor(model => model.dv_rut)
         </th>
@@ -54,6 +57,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.rut_empleado)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.dv_rut)
         </td>
         <td>
@@ -90,9 +96,9 @@
             @Html.DisplayFor(modelItem => item.users.user)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.rut_empleado }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.rut_empleado }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.rut_empleado })
+            @Html.ActionLink("Editar", "Edit", new { id = item.rut_empleado }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.rut_empleado }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.rut_empleado })
         </td>
     </tr>
 }

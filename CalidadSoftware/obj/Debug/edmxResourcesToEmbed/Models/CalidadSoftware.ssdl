@@ -4,31 +4,31 @@
     <Key>
       <PropertyRef Name="rut_empleado" />
     </Key>
-    <Property Name="rut_empleado" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="rut_empleado" Type="int" Nullable="false" />
     <Property Name="dv_rut" Type="char" MaxLength="1" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="apellido" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="genero" Type="varchar" MaxLength="9" Nullable="false" />
-    <Property Name="fecha_nac" Type="datetime" Nullable="false" />
+    <Property Name="fecha_nac" Type="date" Nullable="false" />
     <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="telefono" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="telefono" Type="int" Nullable="false" />
     <Property Name="direccion" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="profesion" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="experiencia" Type="int" Nullable="false" />
-    <Property Name="foto" Type="image" Nullable="false" />
-    <Property Name="id_user" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="id_user" Type="int" />
+    <Property Name="foto" Type="image" />
   </EntityType>
   <EntityType Name="users">
     <Key>
       <PropertyRef Name="id_user" />
     </Key>
-    <Property Name="id_user" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="id_user" Type="int" Nullable="false" />
     <Property Name="user" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="privilege_level" Type="numeric" Precision="1" Scale="0" />
+    <Property Name="privilege_level" Type="int" />
   </EntityType>
   <Association Name="FK_Empleado_users">
-    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="users">

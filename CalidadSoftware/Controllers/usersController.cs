@@ -7,12 +7,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CalidadSoftware.Models;
+using Database = CalidadSoftware.Models.Databases;
 
 namespace CalidadSoftware.Controllers
 {
     public class usersController : Controller
     {
-        private DataBase db = new DataBase();
+        private Database db = new Database();
 
         // GET: users
         public ActionResult Index()

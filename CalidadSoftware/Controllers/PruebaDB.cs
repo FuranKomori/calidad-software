@@ -14,7 +14,7 @@ namespace CalidadSoftware.Controllers
         public ActionResult Index()
         {
 
-            DataBase db = new DataBase();
+            Databases db = new Databases();
 
             var listusuarios = db.users.ToList();
 

@@ -14,19 +14,19 @@ namespace CalidadSoftware.Models
     
     public partial class Empleado
     {
-        public decimal rut_empleado { get; set; }
+        public int rut_empleado { get; set; }
         public string dv_rut { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string genero { get; set; }
         public System.DateTime fecha_nac { get; set; }
         public string email { get; set; }
-        public decimal telefono { get; set; }
+        public int telefono { get; set; }
         public string direccion { get; set; }
         public string profesion { get; set; }
         public int experiencia { get; set; }
+        public Nullable<int> id_user { get; set; }
         public byte[] foto { get; set; }
-        public decimal id_user { get; set; }
     
         public virtual users users { get; set; }
     }

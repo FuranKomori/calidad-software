@@ -13,10 +13,10 @@ namespace CalidadSoftware.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DataBase : DbContext
+    public partial class Databases : DbContext
     {
-        public DataBase()
-            : base("name=DataBase")
+        public Databases()
+            : base("name=Databases")
         {
         }
     
@@ -27,6 +27,5 @@ namespace CalidadSoftware.Models
     
         public virtual DbSet<Empleado> Empleado { get; set; }
         public virtual DbSet<users> users { get; set; }
-        public object Usuario { get; internal set; }
     }
 }

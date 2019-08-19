@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="DataBase">
+  <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="Databases">
     <EntitySetMapping Name="Empleado">
       <EntityTypeMapping TypeName="Models.Empleado">
         <MappingFragment StoreEntitySet="Empleado">
@@ -15,8 +15,8 @@
           <ScalarProperty Name="direccion" ColumnName="direccion" />
           <ScalarProperty Name="profesion" ColumnName="profesion" />
           <ScalarProperty Name="experiencia" ColumnName="experiencia" />
-          <ScalarProperty Name="foto" ColumnName="foto" />
           <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

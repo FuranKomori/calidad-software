@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -7,13 +8,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CalidadSoftware.Models;
+using Database = CalidadSoftware.Models.Databases;
 
 namespace CalidadSoftware.Controllers
 {
     [Authorize]
     public class EmpleadoesController : Controller
     {
-        private DataBase db = new DataBase();
+        private Databases db = new Databases();
 
         // GET: Empleadoes
         public ActionResult Index()
@@ -129,5 +131,7 @@ namespace CalidadSoftware.Controllers
             }
             base.Dispose(disposing);
         }
+        [NotMapped]
+        public List<Empleado> ColeccionEmpleados { get; set; }
     }
 }

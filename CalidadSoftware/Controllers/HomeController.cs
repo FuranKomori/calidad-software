@@ -36,7 +36,7 @@ namespace CalidadSoftware.Controllers
 
             if (!string.IsNullOrEmpty(user) && !string.IsNullOrEmpty(password))
             {
-                DataBase db = new DataBase();
+                Databases db = new Databases();
                 var usuario = db.users.FirstOrDefault(e => e.user == user && e.password == password);
                 if (usuario != null)
                 {
@@ -55,6 +55,11 @@ namespace CalidadSoftware.Controllers
 
             
         }
-
+        [Authorize]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -21,11 +21,17 @@
                 @Html.ActionLink("Sistema de Registro de Clientes", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Registrar", "Registrarse", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Ingresar", "Ingresar", "Home", new { area = "" }, null)</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="/Empleadoes/Index">Registrar Empleado</a></li>
+                        <li><a href="/users/Index">Crear Perfil</a></li>
+                        <li><a href=" /home/Logout">Cerrar Sesion</a></li>
+
+                    }
                 </ul>
             </div>
         </div>

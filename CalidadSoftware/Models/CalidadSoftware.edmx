@@ -9,31 +9,31 @@
           <Key>
             <PropertyRef Name="rut_empleado" />
           </Key>
-          <Property Name="rut_empleado" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="rut_empleado" Type="int" Nullable="false" />
           <Property Name="dv_rut" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="apellido" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="genero" Type="varchar" MaxLength="9" Nullable="false" />
-          <Property Name="fecha_nac" Type="datetime" Nullable="false" />
+          <Property Name="fecha_nac" Type="date" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="telefono" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="telefono" Type="int" Nullable="false" />
           <Property Name="direccion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="profesion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="experiencia" Type="int" Nullable="false" />
-          <Property Name="foto" Type="image" Nullable="false" />
-          <Property Name="id_user" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="id_user" Type="int" />
+          <Property Name="foto" Type="image" />
         </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="id_user" />
           </Key>
-          <Property Name="id_user" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="id_user" Type="int" Nullable="false" />
           <Property Name="user" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="privilege_level" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="privilege_level" Type="int" />
         </EntityType>
         <Association Name="FK_Empleado_users">
-          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="users">
@@ -61,33 +61,33 @@
           <Key>
             <PropertyRef Name="rut_empleado" />
           </Key>
-          <Property Name="rut_empleado" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="rut_empleado" Type="Int32" Nullable="false" />
           <Property Name="dv_rut" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="genero" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fecha_nac" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_nac" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="telefono" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="telefono" Type="Int32" Nullable="false" />
           <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="profesion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="experiencia" Type="Int32" Nullable="false" />
-          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="id_user" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="id_user" Type="Int32" />
+          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="users" Relationship="Self.FK_Empleado_users" FromRole="Empleado" ToRole="users" />
         </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="id_user" />
           </Key>
-          <Property Name="id_user" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
           <Property Name="user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="privilege_level" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="privilege_level" Type="Int32" />
           <NavigationProperty Name="Empleado" Relationship="Self.FK_Empleado_users" FromRole="users" ToRole="Empleado" />
         </EntityType>
         <Association Name="FK_Empleado_users">
-          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="users">
@@ -98,7 +98,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DataBase" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Databases" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Empleado" EntityType="Self.Empleado" />
           <EntitySet Name="users" EntityType="Self.users" />
           <AssociationSet Name="FK_Empleado_users" Association="Self.FK_Empleado_users">
@@ -111,7 +111,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="DataBase">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="Databases">
           <EntitySetMapping Name="Empleado">
             <EntityTypeMapping TypeName="Models.Empleado">
               <MappingFragment StoreEntitySet="Empleado">
@@ -126,8 +126,8 @@
                 <ScalarProperty Name="direccion" ColumnName="direccion" />
                 <ScalarProperty Name="profesion" ColumnName="profesion" />
                 <ScalarProperty Name="experiencia" ColumnName="experiencia" />
-                <ScalarProperty Name="foto" ColumnName="foto" />
                 <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
