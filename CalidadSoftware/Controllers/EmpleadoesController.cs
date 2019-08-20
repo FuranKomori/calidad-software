@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.IO;
 using System.Web.Mvc;
 using CalidadSoftware.Models;
 using Database = CalidadSoftware.Models.Databases;
@@ -47,6 +48,8 @@ namespace CalidadSoftware.Controllers
             return View(empleado.ToList());
         }
 
+       
+
         // GET: Empleadoes/Details/5
         public ActionResult Details(decimal id)
         {
@@ -78,6 +81,20 @@ namespace CalidadSoftware.Controllers
         {
             if (ModelState.IsValid)
             {
+                int nom_img = empleado.rut_empleado;
+
+                HttpPostedFileBase file = Request.Files["file"];
+
+                string fileName = Path.GetFileName(file.FileName);
+
+                string ext = Path.GetExtension(file.FileName);
+
+                //HttpPostedFileBase file = Request.Files["file"];
+
+                //var fileName = Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/App_Data/img"), nom_img+ext);
+                file.SaveAs(path);
+
                 db.Empleado.Add(empleado);
                 db.SaveChanges();
                 return RedirectToAction("Index");
