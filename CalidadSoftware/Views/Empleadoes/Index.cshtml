@@ -7,30 +7,43 @@
 
 <h2 class="page-header">Lista de Empleados <small>@numero empleados registrados</small></h2>
 
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-danger">@ViewBag.Message</div>
+    }
+}
+
 <p>
     @Html.ActionLink("Crear Nuevo", "Create")
 </p>
-@using (Html.BeginForm())
-{
-    <p>
-        Buscar por Nombre: @Html.TextBox("nomBusqueda")
-        <input type="submit" value="Buscar" />
-    </p>
-}
-@*@using (Html.BeginForm())
-{
-    <p>
-        Buscar por Experiencia: @Html.TextBox("expBusqueda","", new { placeholder = "0" })
-        <input type="submit" value="Buscar" />
-    </p>
-}*@
-@using (Html.BeginForm())
-{
-    <p>
-        Buscar por Profesión: @Html.TextBox("profBusqueda")
-        <input type="submit" value="Buscar"/>
-    </p>
-}
+
+<div class="col-md-5 text-right">
+    @using (Html.BeginForm())
+    {
+        <p>
+            Buscar por Nombre: @Html.TextBox("nomBusqueda")
+            <input type="submit" value="Buscar" />
+        </p>
+    }
+    @using (Html.BeginForm())
+    {
+        <p>
+            Buscar por Experiencia: @Html.TextBox("expBusqueda")
+            <input type="submit" value="Buscar" range="0,15" message="Por favor ingrese un numero" validate="integer" />
+        </p>
+    }
+    @using (Html.BeginForm())
+    {
+        <p>
+            Buscar por Profesión: @Html.TextBox("profBusqueda")
+            <input type="submit" value="Buscar" />
+        </p>
+    }
+
+</div>
+
+
 <table class="table">
 
     <tr>

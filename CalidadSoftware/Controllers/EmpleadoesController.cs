@@ -18,8 +18,10 @@ namespace CalidadSoftware.Controllers
         private Databases db = new Databases();
 
         // GET: Empleadoes
-        public ActionResult Index(String nomBusqueda, string profBusqueda)
+        public ActionResult Index(string nomBusqueda, string expBusqueda, string profBusqueda, string message)
         {
+            ViewBag.Message = message;
+
             var empleado = db.Empleado.Include(e => e.users);
             
             if (!String.IsNullOrEmpty(nomBusqueda))
@@ -27,10 +29,17 @@ namespace CalidadSoftware.Controllers
                 empleado = empleado.Where(e => e.nombre.Contains(nomBusqueda)
                                        || e.apellido.Contains(nomBusqueda));
             }
-            //if (!(expBusqueda==0)) 
-            //{
-            //    empleado = empleado.Where(e => e.experiencia.Equals(expBusqueda));
-            //}
+            if (!String.IsNullOrEmpty(expBusqueda))
+            {
+                try
+                {
+                    int exp = Convert.ToInt32(expBusqueda);
+                    empleado = empleado.Where(e => e.experiencia.Equals(exp));
+                }catch
+                {
+                    return RedirectToAction("Index", "Empleadoes", new { message = "Debes ingresar el año de experiencia como un numero" });
+                }
+            }
             if (!String.IsNullOrEmpty(profBusqueda))
             {
                 empleado = empleado.Where(e => e.profesion.Contains(profBusqueda));
