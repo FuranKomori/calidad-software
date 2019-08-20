@@ -92,7 +92,7 @@ namespace CalidadSoftware.Controllers
                 //HttpPostedFileBase file = Request.Files["file"];
 
                 //var fileName = Path.GetFileName(file.FileName);
-                var path = Path.Combine(Server.MapPath("~/App_Data/img"), nom_img+ext);
+                var path = Path.Combine(Server.MapPath("~/img"), nom_img+ext);
                 file.SaveAs(path);
 
                 db.Empleado.Add(empleado);

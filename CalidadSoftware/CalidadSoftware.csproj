@@ -238,6 +238,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\img\18256644.jpg" />
+    <Content Include="App_Data\img\256px-Telegram_alternative_logo.svg.png.png" />
+    <Content Include="App_Data\img\66666666.png" />
+    <Content Include="App_Data\img\hola.png" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -246,6 +250,11 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="img\12122122.png" />
+    <Content Include="img\18256644.jpg" />
+    <Content Include="img\256px-Telegram_alternative_logo.svg.png.png" />
+    <Content Include="img\66666666.png" />
+    <Content Include="img\hola.png" />
     <Content Include="Models\CalidadSoftware.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CalidadSoftware.edmx</DependentUpon>
@@ -321,7 +330,6 @@
     <Content Include="Views\Empleadoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Providers\" />
     <Folder Include="Views\Profile\" />
     <Folder Include="Views\PruebaDB\" />
