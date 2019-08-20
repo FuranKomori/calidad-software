@@ -10,10 +10,31 @@
 <p>
     @Html.ActionLink("Crear Nuevo", "Create")
 </p>
+@using (Html.BeginForm())
+{
+    <p>
+        Buscar por Nombre: @Html.TextBox("nomBusqueda")
+        <input type="submit" value="Buscar" />
+    </p>
+}
+@*@using (Html.BeginForm())
+{
+    <p>
+        Buscar por Experiencia: @Html.TextBox("expBusqueda","", new { placeholder = "0" })
+        <input type="submit" value="Buscar" />
+    </p>
+}*@
+@using (Html.BeginForm())
+{
+    <p>
+        Buscar por Profesión: @Html.TextBox("profBusqueda")
+        <input type="submit" value="Buscar"/>
+    </p>
+}
 <table class="table">
 
     <tr>
-        <th>@Html.DisplayNameFor(model => model.rut_empleado)</th>
+        <th>RUT</th>
 
         <th>
             @Html.DisplayNameFor(model => model.dv_rut)
@@ -54,53 +75,54 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.rut_empleado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dv_rut)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.apellido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.genero)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha_nac)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.telefono)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.direccion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.profesion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.experiencia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.foto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.users.user)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.rut_empleado }) |
-            @Html.ActionLink("Detalles", "Details", new { id = item.rut_empleado }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id = item.rut_empleado })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.rut_empleado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dv_rut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.genero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_nac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.profesion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.experiencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.foto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.users.user)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.rut_empleado }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.rut_empleado }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.rut_empleado })
+            </td>
+        </tr>
+    }
 
 </table>
