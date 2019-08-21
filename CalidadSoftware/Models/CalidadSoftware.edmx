@@ -21,7 +21,7 @@
           <Property Name="profesion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="experiencia" Type="int" Nullable="false" />
           <Property Name="id_user" Type="int" />
-          <Property Name="foto" Type="image" />
+          <Property Name="foto" Type="varchar" MaxLength="50" Nullable="true"/>
         </EntityType>
         <EntityType Name="users">
           <Key>
@@ -73,7 +73,7 @@
           <Property Name="profesion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="experiencia" Type="Int32" Nullable="false" />
           <Property Name="id_user" Type="Int32" />
-          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="foto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="true" />
           <NavigationProperty Name="users" Relationship="Self.FK_Empleado_users" FromRole="Empleado" ToRole="users" />
         </EntityType>
         <EntityType Name="users">

@@ -26,7 +26,7 @@ namespace CalidadSoftware.Models
         public string profesion { get; set; }
         public int experiencia { get; set; }
         public Nullable<int> id_user { get; set; }
-        public byte[] foto { get; set; }
+        public string foto { get; set; }
     
         public virtual users users { get; set; }
     }
