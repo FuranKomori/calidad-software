@@ -94,7 +94,7 @@ namespace CalidadSoftware.Controllers
                 //var fileName = Path.GetFileName(file.FileName);
                 var path = Path.Combine(Server.MapPath("~/img"), nom_img+ext);
                 file.SaveAs(path);
-
+                empleado.foto = nom_img.ToString() + ext;
                 db.Empleado.Add(empleado);
                 db.SaveChanges();
                 return RedirectToAction("Index");

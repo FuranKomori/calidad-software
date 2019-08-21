@@ -16,7 +16,7 @@
     <Property Name="profesion" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="experiencia" Type="int" Nullable="false" />
     <Property Name="id_user" Type="int" />
-    <Property Name="foto" Type="image" />
+    <Property Name="foto" Type="varchar" MaxLength="50" Nullable="true" />
   </EntityType>
   <EntityType Name="users">
     <Key>

@@ -90,52 +90,58 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.rut_empleado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dv_rut)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.genero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fecha_nac)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.profesion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.experiencia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.foto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.users.user)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.rut_empleado }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.rut_empleado }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.rut_empleado })
-            </td>
-        </tr>
+    <tr>
+        <td>
+
+            @{
+
+                var img = @Html.DisplayFor(modelItem => item.foto);
+
+                <img src="~/img/@img" height=50px width=50px />
+              }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rut_empleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dv_rut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.genero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_nac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.profesion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.experiencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.users.user)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.rut_empleado }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.rut_empleado }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.rut_empleado })
+        </td>
+    </tr>
     }
 
 </table>

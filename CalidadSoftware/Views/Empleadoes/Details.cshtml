@@ -16,8 +16,11 @@
         </dt>
 
         <dd>
-
-            <img src="~/img/12122122.png" />
+            @{ 
+                var img = @Html.DisplayFor(model => model.foto);
+               
+            }
+            <img src="~/img/@img" height=100px width=100px />
 
         </dd>
 
