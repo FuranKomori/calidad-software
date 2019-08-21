@@ -129,6 +129,21 @@ namespace CalidadSoftware.Controllers
         {
             if (ModelState.IsValid)
             {
+                int nom_img = empleado.rut_empleado;
+
+                HttpPostedFileBase file = Request.Files["file"];
+
+                string fileName = Path.GetFileName(file.FileName);
+
+                string ext = Path.GetExtension(file.FileName);
+
+                //HttpPostedFileBase file = Request.Files["file"];
+
+                //var fileName = Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/img"), nom_img + ext);
+                file.SaveAs(path);
+                empleado.foto = nom_img.ToString() + ext;
+
                 db.Entry(empleado).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

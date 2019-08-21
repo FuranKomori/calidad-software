@@ -1,4 +1,8 @@
 ﻿@model CalidadSoftware.Models.Empleado
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+<script type="text/javascript" src="bootstrap.min.js"></script>
+<script src="Scripts/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 @{
     ViewBag.Title = "Create";
@@ -9,7 +13,7 @@
 @using (Html.BeginForm("Create", "Empleadoes", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Empleado</h4>
         <hr />
@@ -57,8 +61,19 @@
         <div class="form-group">
             @Html.LabelFor(model => model.fecha_nac, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                @*<script>
+                    $(function () {
+                        $("#txtfromdate").datepicker({
+                            dateFormat: "dd-M-yy"
+                        });
+                    });
+                </script>
+
+                <p><input type="text" id="txtfromdate"></p>
+                <asp:TextBox ID="txtfromdate" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txttodate" runat="server"></asp:TextBox>*@
                 @Html.EditorFor(model => model.fecha_nac, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.fecha_nac, "", new { @class = "text-danger" })
+        @Html.ValidationMessageFor(model => model.fecha_nac, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -106,13 +121,13 @@
             @Html.LabelFor(model => model.foto, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
-                
-                    <input type="file" name="file" id="file"/>
-                
+
+                <input type="file" name="file" id="file" />
+
 
 
                 @*@Html.EditorFor(model => model.foto, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.foto, "", new { @class = "text-danger" })*@
+                    @Html.ValidationMessageFor(model => model.foto, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
