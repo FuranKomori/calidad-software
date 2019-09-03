@@ -256,3 +256,7 @@ C:\Users\CETECOM Concepción\Desktop\calidad\pry\CalidadSoftware\obj\Debug\Calid
 C:\Users\CETECOM Concepción\Desktop\calidad\pry\CalidadSoftware\obj\Debug\CalidadSoftware.csproj.CopyComplete
 C:\Users\CETECOM Concepción\Desktop\calidad\pry\CalidadSoftware\obj\Debug\CalidadSoftware.dll
 C:\Users\CETECOM Concepción\Desktop\calidad\pry\CalidadSoftware\obj\Debug\CalidadSoftware.pdb
+C:\Users\frana\source\repos\pryCalidadDeSoftware\CalidadSoftware\bin\PagedList.dll
+C:\Users\frana\source\repos\pryCalidadDeSoftware\CalidadSoftware\bin\PagedList.Mvc.dll
+C:\Users\frana\source\repos\pryCalidadDeSoftware\CalidadSoftware\bin\PagedList.xml
+C:\Users\frana\source\repos\pryCalidadDeSoftware\CalidadSoftware\bin\PagedList.Mvc.xml
