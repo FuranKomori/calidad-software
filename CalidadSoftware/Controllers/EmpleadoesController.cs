@@ -19,8 +19,13 @@ namespace CalidadSoftware.Controllers
         private Databases db = new Databases();
 
         // GET: Empleadoes
-        public ActionResult Index(string nomBusqueda, string expBusqueda, string profBusqueda, string message)
-        {
+        public ActionResult Index(string nomBusqueda, string expBusqueda, string profBusqueda, string message, int pagina = 1)
+        { 
+        ////    var cantdadregistrosporpagina = 10;
+        ////    using (var db = new ApplicationDbContext())
+            {
+
+            }    
             ViewBag.Message = message;
 
             var empleado = db.Empleado.Include(e => e.users);
@@ -45,6 +50,9 @@ namespace CalidadSoftware.Controllers
             {
                 empleado = empleado.Where(e => e.profesion.Contains(profBusqueda));
             }
+
+
+
             return View(empleado.ToList());
         }
 

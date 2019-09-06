@@ -1,12 +1,14 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link type="text/css" rel="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+ 
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <body>
@@ -27,18 +29,18 @@
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, null)</li>
                     </ul>
-                        @if (User.Identity.IsAuthenticated)
-                        {
+                    @if (User.Identity.IsAuthenticated)
+                    {
                         <ul class="nav navbar-nav">
                             <li><a href="/Empleadoes/Index">Registrar Empleado</a></li>
                             <li><a href="/users/Index">Crear Perfil</a></li>
                         </ul>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href=" /home/Logout"><span class="glyphicon glyphicon-log-out"></span>Cerrar Sesion</a></li>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href=" /home/Logout"><span class="glyphicon glyphicon-log-out"></span>Cerrar Sesion</a></li>
 
 
-                            </ul>
-                        }
+                        </ul>
+                    }
 
                 </div>
             </div>
@@ -54,6 +56,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
