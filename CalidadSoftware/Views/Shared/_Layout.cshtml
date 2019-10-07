@@ -7,8 +7,8 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link type="text/css" rel="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
- 
+    <link rel="stylesheet" type="text/css" href="Scripts/DataTables/datatables.min.css" />
+    
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <body>
@@ -56,7 +56,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="Scripts/DataTables/datatables.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
