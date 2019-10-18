@@ -31,6 +31,37 @@ namespace CalidadSoftware.Providers
 
         public float Sueldo_Final { get; set; }
 
-        
+
+        public double Calc_Bonificacion(int Sueldo, int Gratificacion, int Antiguedad, int Carga_Familiar)
+        {
+            double Resultado;
+            double bono = 0.20;
+            int Carga= 7000;
+            double bono_antiguedad= 0.05;
+
+            Resultado = Sueldo * bono;
+            Resultado = Resultado + (Sueldo * (Antiguedad * bono_antiguedad));
+            Resultado = Resultado + (Carga_Familiar * Carga);
+            Resultado = Resultado + Gratificacion;
+
+            return Resultado;
+        }
+
+        public double Calc_Descuento(int Sueldo)
+        {
+            double Resultado;
+            double Isapre = 0.07;
+            double Afp = 0.12;
+            int Seguro = 15000;
+
+
+            Resultado = Sueldo * Isapre;
+            Resultado = Resultado + (Sueldo * Afp);
+            Resultado = Resultado + Seguro;
+
+            return Resultado;
+        }
     }
+
+
 }
