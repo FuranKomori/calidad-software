@@ -1,0 +1,58 @@
+﻿@model CalidadSoftware.Models.Contrato
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contrato</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_ini)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_ini)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_contrato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_contrato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria_Empleado.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria_Empleado.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleado.dv_rut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleado.dv_rut)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_contrato }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

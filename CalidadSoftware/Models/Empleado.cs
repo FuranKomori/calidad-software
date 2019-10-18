@@ -14,6 +14,15 @@ namespace CalidadSoftware.Models
     
     public partial class Empleado
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Empleado()
+        {
+            this.Contrato = new HashSet<Contrato>();
+            this.Bonificacion = new HashSet<Bonificacion>();
+            this.Descuento = new HashSet<Descuento>();
+            this.Valor_Hora = new HashSet<Valor_Hora>();
+        }
+    
         public int rut_empleado { get; set; }
         public string dv_rut { get; set; }
         public string nombre { get; set; }
@@ -29,5 +38,13 @@ namespace CalidadSoftware.Models
         public string foto { get; set; }
     
         public virtual users users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Contrato> Contrato { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bonificacion> Bonificacion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Descuento> Descuento { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Valor_Hora> Valor_Hora { get; set; }
     }
 }

@@ -7,12 +7,22 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CalidadSoftware.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Database = CalidadSoftware.Models.Databases;
 
 namespace CalidadSoftware.Controllers
 {
+
+
     public class usersController : Controller
     {
+        IdentityDbContext context;
+
+        public void AccountController()
+        {
+            context = new IdentityDbContext();
+        }
+
         private Database db = new Database();
 
         // GET: users
@@ -47,6 +57,7 @@ namespace CalidadSoftware.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public ActionResult Create([Bind(Include = "id_user,user,password,privilege_level")] users users)
         {
             if (ModelState.IsValid)
@@ -56,7 +67,9 @@ namespace CalidadSoftware.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(users);
+            ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
+
+            return View();
         }
 
         // GET: users/Edit/5

@@ -18,6 +18,10 @@
     <Property Name="id_user" Type="Int32" />
     <Property Name="foto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="true" />
     <NavigationProperty Name="users" Relationship="Self.FK_Empleado_users" FromRole="Empleado" ToRole="users" />
+    <NavigationProperty Name="Contrato" Relationship="Models.FK_Contrato_Empleado" FromRole="Empleado" ToRole="Contrato" />
+    <NavigationProperty Name="Bonificacion" Relationship="Models.FK_Bonificacion_Empleado" FromRole="Empleado" ToRole="Bonificacion" />
+    <NavigationProperty Name="Descuento" Relationship="Models.FK_Descuento_Empleado" FromRole="Empleado" ToRole="Descuento" />
+    <NavigationProperty Name="Valor_Hora" Relationship="Models.FK_Valor_Hora_Empleado" FromRole="Empleado" ToRole="Valor_Hora" />
   </EntityType>
   <EntityType Name="users">
     <Key>
@@ -48,5 +52,167 @@
       <End Role="users" EntitySet="users" />
       <End Role="Empleado" EntitySet="Empleado" />
     </AssociationSet>
+    <EntitySet Name="Categoria_Empleado" EntityType="Models.Categoria_Empleado" />
+    <EntitySet Name="Contrato" EntityType="Models.Contrato" />
+    <EntitySet Name="sysdiagrams" EntityType="Models.sysdiagrams" />
+    <EntitySet Name="Bonificacion" EntityType="Models.Bonificacion" />
+    <EntitySet Name="Descuento" EntityType="Models.Descuento" />
+    <EntitySet Name="Valor_Hora" EntityType="Models.Valor_Hora" />
+    <AssociationSet Name="FK_Contrato_Categoria_Empleado" Association="Models.FK_Contrato_Categoria_Empleado">
+      <End Role="Categoria_Empleado" EntitySet="Categoria_Empleado" />
+      <End Role="Contrato" EntitySet="Contrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contrato_Empleado" Association="Models.FK_Contrato_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Contrato" EntitySet="Contrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bonificacion_Empleado" Association="Models.FK_Bonificacion_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Bonificacion" EntitySet="Bonificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Descuento_Empleado" Association="Models.FK_Descuento_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Descuento" EntitySet="Descuento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Valor_Hora_Empleado" Association="Models.FK_Valor_Hora_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Valor_Hora" EntitySet="Valor_Hora" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Categoria_Empleado">
+    <Key>
+      <PropertyRef Name="id_categoria" />
+    </Key>
+    <Property Name="id_categoria" Type="Int32" Nullable="false" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Contrato" Relationship="Models.FK_Contrato_Categoria_Empleado" FromRole="Categoria_Empleado" ToRole="Contrato" />
+  </EntityType>
+  <EntityType Name="Contrato">
+    <Key>
+      <PropertyRef Name="id_contrato" />
+    </Key>
+    <Property Name="id_contrato" Type="Int32" Nullable="false" />
+    <Property Name="fecha_ini" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="tipo_contrato" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rut_empleado" Type="Int32" Nullable="false" />
+    <Property Name="id_categoria" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Categoria_Empleado" Relationship="Models.FK_Contrato_Categoria_Empleado" FromRole="Contrato" ToRole="Categoria_Empleado" />
+    <NavigationProperty Name="Empleado" Relationship="Models.FK_Contrato_Empleado" FromRole="Contrato" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Bonificacion">
+    <Key>
+      <PropertyRef Name="Bono" />
+      <PropertyRef Name="Gratificacion" />
+      <PropertyRef Name="Carga_Familiar" />
+      <PropertyRef Name="fecha_calculo" />
+      <PropertyRef Name="id_empleado" />
+    </Key>
+    <Property Name="Bono" Type="Int32" Nullable="false" />
+    <Property Name="Gratificacion" Type="Int32" Nullable="false" />
+    <Property Name="Carga_Familiar" Type="Int32" Nullable="false" />
+    <Property Name="fecha_calculo" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="id_empleado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Empleado" Relationship="Models.FK_Bonificacion_Empleado" FromRole="Bonificacion" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Descuento">
+    <Key>
+      <PropertyRef Name="Isapre" />
+      <PropertyRef Name="Seguro" />
+      <PropertyRef Name="AFP" />
+      <PropertyRef Name="Otros" />
+      <PropertyRef Name="fecha_calculo" />
+      <PropertyRef Name="id_empleado" />
+    </Key>
+    <Property Name="Isapre" Type="Int32" Nullable="false" />
+    <Property Name="Seguro" Type="Int32" Nullable="false" />
+    <Property Name="AFP" Type="Int32" Nullable="false" />
+    <Property Name="Otros" Type="Int32" Nullable="false" />
+    <Property Name="fecha_calculo" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="id_empleado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Empleado" Relationship="Models.FK_Descuento_Empleado" FromRole="Descuento" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Valor_Hora">
+    <Key>
+      <PropertyRef Name="id_empleado" />
+      <PropertyRef Name="fecha_calculo" />
+      <PropertyRef Name="valor_hora1" />
+      <PropertyRef Name="horas_trabajadas" />
+    </Key>
+    <Property Name="id_empleado" Type="Int32" Nullable="false" />
+    <Property Name="fecha_calculo" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="valor_hora1" Type="Int32" Nullable="false" />
+    <Property Name="horas_trabajadas" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Empleado" Relationship="Models.FK_Valor_Hora_Empleado" FromRole="Valor_Hora" ToRole="Empleado" />
+  </EntityType>
+  <Association Name="FK_Contrato_Categoria_Empleado">
+    <End Type="Models.Categoria_Empleado" Role="Categoria_Empleado" Multiplicity="1" />
+    <End Type="Models.Contrato" Role="Contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria_Empleado">
+        <PropertyRef Name="id_categoria" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="id_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contrato_Empleado">
+    <End Type="Models.Empleado" Role="Empleado" Multiplicity="1" />
+    <End Type="Models.Contrato" Role="Contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="rut_empleado" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="rut_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bonificacion_Empleado">
+    <End Type="Models.Empleado" Role="Empleado" Multiplicity="1" />
+    <End Type="Models.Bonificacion" Role="Bonificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="rut_empleado" />
+      </Principal>
+      <Dependent Role="Bonificacion">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Descuento_Empleado">
+    <End Type="Models.Empleado" Role="Empleado" Multiplicity="1" />
+    <End Type="Models.Descuento" Role="Descuento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="rut_empleado" />
+      </Principal>
+      <Dependent Role="Descuento">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Valor_Hora_Empleado">
+    <End Type="Models.Empleado" Role="Empleado" Multiplicity="1" />
+    <End Type="Models.Valor_Hora" Role="Valor_Hora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="rut_empleado" />
+      </Principal>
+      <Dependent Role="Valor_Hora">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

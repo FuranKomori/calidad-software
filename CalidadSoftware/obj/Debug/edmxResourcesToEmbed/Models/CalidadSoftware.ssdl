@@ -1,5 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'bdpry.dbo.Bonificacion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Bonificacion">
+    <Key>
+      <PropertyRef Name="Bono" />
+      <PropertyRef Name="Gratificacion" />
+      <PropertyRef Name="Carga_Familiar" />
+      <PropertyRef Name="fecha_calculo" />
+      <PropertyRef Name="id_empleado" />
+    </Key>
+    <Property Name="Bono" Type="float" Nullable="false" />
+    <Property Name="Gratificacion" Type="float" Nullable="false" />
+    <Property Name="Carga_Familiar" Type="float" Nullable="false" />
+    <Property Name="fecha_calculo" Type="date" Nullable="false" />
+    <Property Name="id_empleado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categoria_Empleado">
+    <Key>
+      <PropertyRef Name="id_categoria" />
+    </Key>
+    <Property Name="id_categoria" Type="int" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contrato">
+    <Key>
+      <PropertyRef Name="id_contrato" />
+    </Key>
+    <Property Name="id_contrato" Type="int" Nullable="false" />
+    <Property Name="fecha_ini" Type="date" Nullable="false" />
+    <Property Name="fecha_fin" Type="date" Nullable="false" />
+    <Property Name="tipo_contrato" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="rut_empleado" Type="int" Nullable="false" />
+    <Property Name="id_categoria" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'bdpry.dbo.Descuento' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Descuento">
+    <Key>
+      <PropertyRef Name="Isapre" />
+      <PropertyRef Name="Seguro" />
+      <PropertyRef Name="AFP" />
+      <PropertyRef Name="Otros" />
+      <PropertyRef Name="fecha_calculo" />
+      <PropertyRef Name="id_empleado" />
+    </Key>
+    <Property Name="Isapre" Type="float" Nullable="false" />
+    <Property Name="Seguro" Type="float" Nullable="false" />
+    <Property Name="AFP" Type="float" Nullable="false" />
+    <Property Name="Otros" Type="float" Nullable="false" />
+    <Property Name="fecha_calculo" Type="date" Nullable="false" />
+    <Property Name="id_empleado" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Empleado">
     <Key>
       <PropertyRef Name="rut_empleado" />
@@ -16,7 +68,17 @@
     <Property Name="profesion" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="experiencia" Type="int" Nullable="false" />
     <Property Name="id_user" Type="int" />
-    <Property Name="foto" Type="varchar" MaxLength="50" Nullable="true" />
+    <Property Name="foto" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="users">
     <Key>
@@ -27,6 +89,68 @@
     <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="privilege_level" Type="int" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'bdpry.dbo.Valor_Hora' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Valor_Hora">
+    <Key>
+      <PropertyRef Name="id_empleado" />
+      <PropertyRef Name="fecha_calculo" />
+      <PropertyRef Name="valor_hora" />
+      <PropertyRef Name="horas_trabajadas" />
+    </Key>
+    <Property Name="id_empleado" Type="int" Nullable="false" />
+    <Property Name="fecha_calculo" Type="date" Nullable="false" />
+    <Property Name="valor_hora" Type="float" Nullable="false" />
+    <Property Name="horas_trabajadas" Type="float" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Bonificacion_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Bonificacion" Type="Self.Bonificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="rut_empleado" />
+      </Principal>
+      <Dependent Role="Bonificacion">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contrato_Categoria_Empleado">
+    <End Role="Categoria_Empleado" Type="Self.Categoria_Empleado" Multiplicity="1" />
+    <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria_Empleado">
+        <PropertyRef Name="id_categoria" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="id_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contrato_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="rut_empleado" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="rut_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Descuento_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Descuento" Type="Self.Descuento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="rut_empleado" />
+      </Principal>
+      <Dependent Role="Descuento">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Empleado_users">
     <End Role="users" Type="Self.users" Multiplicity="0..1" />
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
@@ -39,12 +163,74 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Valor_Hora_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Valor_Hora" Type="Self.Valor_Hora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="rut_empleado" />
+      </Principal>
+      <Dependent Role="Valor_Hora">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ModelsStoreContainer">
+    <EntitySet Name="Categoria_Empleado" EntityType="Self.Categoria_Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contrato" EntityType="Self.Contrato" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bonificacion" EntityType="Self.Bonificacion" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Bonificacion].[Bono] AS [Bono], 
+    [Bonificacion].[Gratificacion] AS [Gratificacion], 
+    [Bonificacion].[Carga_Familiar] AS [Carga_Familiar], 
+    [Bonificacion].[fecha_calculo] AS [fecha_calculo], 
+    [Bonificacion].[id_empleado] AS [id_empleado]
+    FROM [dbo].[Bonificacion] AS [Bonificacion]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Descuento" EntityType="Self.Descuento" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Descuento].[Isapre] AS [Isapre], 
+    [Descuento].[Seguro] AS [Seguro], 
+    [Descuento].[AFP] AS [AFP], 
+    [Descuento].[Otros] AS [Otros], 
+    [Descuento].[fecha_calculo] AS [fecha_calculo], 
+    [Descuento].[id_empleado] AS [id_empleado]
+    FROM [dbo].[Descuento] AS [Descuento]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Valor_Hora" EntityType="Self.Valor_Hora" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Valor_Hora].[id_empleado] AS [id_empleado], 
+    [Valor_Hora].[fecha_calculo] AS [fecha_calculo], 
+    [Valor_Hora].[valor_hora] AS [valor_hora], 
+    [Valor_Hora].[horas_trabajadas] AS [horas_trabajadas]
+    FROM [dbo].[Valor_Hora] AS [Valor_Hora]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Bonificacion_Empleado" Association="Self.FK_Bonificacion_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Bonificacion" EntitySet="Bonificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contrato_Categoria_Empleado" Association="Self.FK_Contrato_Categoria_Empleado">
+      <End Role="Categoria_Empleado" EntitySet="Categoria_Empleado" />
+      <End Role="Contrato" EntitySet="Contrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contrato_Empleado" Association="Self.FK_Contrato_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Contrato" EntitySet="Contrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Descuento_Empleado" Association="Self.FK_Descuento_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Descuento" EntitySet="Descuento" />
+    </AssociationSet>
     <AssociationSet Name="FK_Empleado_users" Association="Self.FK_Empleado_users">
       <End Role="users" EntitySet="users" />
       <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Valor_Hora_Empleado" Association="Self.FK_Valor_Hora_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Valor_Hora" EntitySet="Valor_Hora" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

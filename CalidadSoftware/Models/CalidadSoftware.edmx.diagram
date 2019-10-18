@@ -8,6 +8,17 @@
         <EntityTypeShape EntityType="Models.Empleado" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Models.users" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
         <AssociationConnector Association="Models.FK_Empleado_users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Models.Categoria_Empleado" Width="1.5" PointX="7.125" PointY="0.5" />
+        <EntityTypeShape EntityType="Models.Contrato" Width="1.5" PointX="7.375" PointY="2.75" />
+        <EntityTypeShape EntityType="Models.sysdiagrams" Width="1.5" PointX="0.5" PointY="7.375" />
+        <EntityTypeShape EntityType="Models.Bonificacion" Width="1.5" PointX="8.625" PointY="6" />
+        <EntityTypeShape EntityType="Models.Descuento" Width="1.5" PointX="6.625" PointY="5.875" />
+        <EntityTypeShape EntityType="Models.Valor_Hora" Width="1.5" PointX="4.875" PointY="6" />
+        <AssociationConnector Association="Models.FK_Contrato_Categoria_Empleado" />
+        <AssociationConnector Association="Models.FK_Contrato_Empleado" />
+        <AssociationConnector Association="Models.FK_Bonificacion_Empleado" />
+        <AssociationConnector Association="Models.FK_Descuento_Empleado" />
+        <AssociationConnector Association="Models.FK_Valor_Hora_Empleado" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

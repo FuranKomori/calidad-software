@@ -27,5 +27,11 @@ namespace CalidadSoftware.Models
     
         public virtual DbSet<Empleado> Empleado { get; set; }
         public virtual DbSet<users> users { get; set; }
+        public virtual DbSet<Categoria_Empleado> Categoria_Empleado { get; set; }
+        public virtual DbSet<Contrato> Contrato { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Bonificacion> Bonificacion { get; set; }
+        public virtual DbSet<Descuento> Descuento { get; set; }
+        public virtual DbSet<Valor_Hora> Valor_Hora { get; set; }
     }
 }

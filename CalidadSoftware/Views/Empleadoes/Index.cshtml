@@ -49,6 +49,9 @@
 <table id="tablaEmpleado" class="table table-striped">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.foto)
+            </th>
             <th>RUT</th>
 
             <th>
@@ -80,9 +83,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.experiencia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.foto)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.users.user)
