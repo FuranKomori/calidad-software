@@ -4,10 +4,16 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
+using System.Globalization;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using CalidadSoftware.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using Database = CalidadSoftware.Models.Databases;
 
 namespace CalidadSoftware.Controllers
@@ -16,12 +22,23 @@ namespace CalidadSoftware.Controllers
 
     public class usersController : Controller
     {
+
+
+        public class ApplicationUser : IdentityUser
+        {
+        }
+
+        
+
+        public UserManager<ApplicationUser> UserManager { get; private set; }
+
         IdentityDbContext context;
 
-        public void AccountController()
+        public usersController()
         {
             context = new IdentityDbContext();
         }
+
 
         private Database db = new Database();
 
@@ -47,8 +64,10 @@ namespace CalidadSoftware.Controllers
         }
 
         // GET: users/Create
+        [AllowAnonymous]
         public ActionResult Create()
         {
+            ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
             return View();
         }
 
@@ -58,17 +77,29 @@ namespace CalidadSoftware.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public ActionResult Create([Bind(Include = "id_user,user,password,privilege_level")] users users)
+        public async Task<ActionResult> Create([Bind(Include = "id_user,user,password,privilege_level")] users users)
         {
+
             if (ModelState.IsValid)
             {
                 db.users.Add(users);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                /*return RedirectToAction("Index");*/
+                var user = new ApplicationUser { UserName = users.user };
+                var result = await UserManager.CreateAsync(user, users.password);
+                if (result.Succeeded)
+                {
+
+                    //Assign Role to user Here 
+                    await this.UserManager.AddToRoleAsync(user.Id, users.Name);
+                    //Ends Here
+                    
+
+                    return RedirectToAction("Index", "Home");
+                }
             }
 
             ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
-
             return View();
         }
 

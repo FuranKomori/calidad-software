@@ -24,7 +24,7 @@
             @Html.DisplayNameFor(model => model.Categoria_Empleado.descripcion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Empleado.dv_rut)
+            @Html.DisplayNameFor(model => model.Empleado.rut_empleado)
         </th>
         <th></th>
     </tr>
@@ -45,7 +45,7 @@
                 @Html.DisplayFor(modelItem => item.Categoria_Empleado.descripcion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Empleado.dv_rut)
+                @Html.DisplayFor(modelItem => item.Empleado.rut_empleado)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.id_contrato }) |

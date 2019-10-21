@@ -22,14 +22,14 @@ namespace CalidadSoftware.Controllers
         // GET: Privilege
         public ActionResult Index()
         {
-            var Privileges = context.Roles.ToList();
-            return View(Privileges);
+            var Roles = context.Roles.ToList();
+            return View(Roles);
         }
 
         public ActionResult Create()
         {
-            var Privilege = new IdentityRole();
-            return View(Privilege);
+            var Roles = new IdentityRole();
+            return View(Roles);
         }
 
         [HttpPost]

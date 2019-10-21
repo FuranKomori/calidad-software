@@ -250,6 +250,7 @@
     <Compile Include="Models\Empleado.cs">
       <DependentUpon>CalidadSoftware.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>CalidadSoftware.tt</DependentUpon>
     </Compile>
@@ -389,13 +390,16 @@
     <Content Include="Views\Empleadoes\Details.cshtml" />
     <Content Include="Views\Empleadoes\Edit.cshtml" />
     <Content Include="Views\Empleadoes\Index.cshtml" />
-    <Content Include="Views\Contratoes\Create.cshtml" />
     <Content Include="Views\Contratoes\Details.cshtml" />
-    <Content Include="Views\Contratoes\Edit.cshtml" />
     <Content Include="Views\Contratoes\Index.cshtml" />
+    <Content Include="Views\Shared\AuthorizeFailed.cshtml" />
+    <Content Include="Views\Privilege\Create.cshtml" />
+    <Content Include="Views\Privilege\Index.cshtml" />
+    <Content Include="Views\Contratoes\Create.cshtml" />
+    <Content Include="Views\Contratoes\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Privilege\" />
+    <Folder Include="Views\IdentityModels\" />
     <Folder Include="Views\Profile\" />
     <Folder Include="Views\PruebaDB\" />
   </ItemGroup>

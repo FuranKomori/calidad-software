@@ -24,7 +24,10 @@ namespace CalidadSoftware.Models
         public string user { get; set; }
         public string password { get; set; }
         public Nullable<int> privilege_level { get; set; }
-    
+        public string Name { get; set; }
+
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Empleado> Empleado { get; set; }
     }

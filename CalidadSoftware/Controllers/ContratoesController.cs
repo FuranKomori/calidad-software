@@ -35,7 +35,7 @@ namespace CalidadSoftware.Controllers
                 return HttpNotFound();
             }
 
-            var sueldo = new Sueldo( )
+            var sueldo = new Sueldo()
             {
                 Bonificacion = 1000,
                 Descuento = 2000,
@@ -46,11 +46,15 @@ namespace CalidadSoftware.Controllers
             return View(sueldo);
         }
 
-        // GET: Contratoes/Create
+
         public ActionResult Create()
         {
             ViewBag.id_categoria = new SelectList(db.Categoria_Empleado, "id_categoria", "descripcion");
-            ViewBag.rut_empleado = new SelectList(db.Empleado, "rut_empleado", "dv_rut");
+            ViewBag.rut_empleado = new SelectList(from s in db.Empleado select new
+                                                    {
+                                                        rut_empleado = s.rut_empleado,
+                                                        nombrecompleto = s.nombre + " " + s.apellido
+                                                    }, "rut_empleado", "nombrecompleto");
             return View();
         }
 
@@ -69,7 +73,7 @@ namespace CalidadSoftware.Controllers
             }
 
             ViewBag.id_categoria = new SelectList(db.Categoria_Empleado, "id_categoria", "descripcion", contrato.id_categoria);
-            ViewBag.rut_empleado = new SelectList(db.Empleado, "rut_empleado", "dv_rut", contrato.rut_empleado);
+            ViewBag.rut_empleado = new SelectList(db.Empleado, "apellido", "nombre", contrato.rut_empleado);
             return View(contrato);
         }
 
@@ -106,21 +110,8 @@ namespace CalidadSoftware.Controllers
             ViewBag.id_categoria = new SelectList(db.Categoria_Empleado, "id_categoria", "descripcion", contrato.id_categoria);
             ViewBag.rut_empleado = new SelectList(db.Empleado, "rut_empleado", "dv_rut", contrato.rut_empleado);
             return View(contrato);
-        }
+        }   
 
-        // GET: Contratoes/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Contrato contrato = db.Contrato.Find(id);
-            if (contrato == null)
-            {
-                return HttpNotFound();
-            }
-            return View(contrato);
-        }
     }
 }
+
