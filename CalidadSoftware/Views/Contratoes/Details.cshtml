@@ -50,6 +50,36 @@
             @Html.DisplayFor(model => model.Empleado.rut_empleado)
         </dd>
 
+        <dt>
+            Valor Hora
+        </dt>
+
+        <dd>
+
+            @{
+                // int valor_hora = Model.Empleado.Valor_Hora.Select(x => x.id_empleado == 18256644);
+                //var res = products.select(x => x.Id).ToArray();
+
+
+                var item2 = Model.Empleado.Valor_Hora.SingleOrDefault(x => x.id_empleado == 18256644);
+
+
+                var query = (from c in Model.Empleado.Valor_Hora where c.id_empleado.Equals(18256644) select new { c.valor_hora1 }).Single();
+
+
+                }
+
+        
+            @query.valor_hora1
+          
+
+        </dd>
+
+
+
+
+
+
     </dl>
 </div>
 <p>

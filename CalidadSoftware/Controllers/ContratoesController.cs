@@ -30,20 +30,22 @@ namespace CalidadSoftware.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Contrato contrato = db.Contrato.Find(id);
+
+
             if (contrato == null)
             {
                 return HttpNotFound();
             }
 
-            var sueldo = new Sueldo()
-            {
-                Bonificacion = 1000,
-                Descuento = 2000,
-                Sueldo_Final = 30000
+            //var sueldo = new Sueldo()
+            //{
+            //    Bonificacion = 1000,
+            //    Descuento = 2000,
+            //    Sueldo_Final = 30000
 
-            };
+            //};
 
-            return View(sueldo);
+            return View(contrato);
         }
 
 
