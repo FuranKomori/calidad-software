@@ -61,7 +61,6 @@
             if (query != null)
             {
                 <dd>$ @query.valor_hora1</dd>
-
             }
             else
             {
@@ -90,7 +89,6 @@
             <dt>
                 Descuento
             </dt>
-
             @{
                 var descuento = Calculos.Calc_Descuento(query.horas_trabajadas * query.valor_hora1);
                 <dd>$ @descuento</dd>
@@ -99,11 +97,10 @@
             <dt>
                 Sueldo Liquido
             </dt>
-
-                @{
-                    double Sueldo_liq = (sueldo_bruto + bono - descuento);
-                 <dd>$ @Sueldo_liq</dd>
-                }
+            @{
+               double Sueldo_liq = (sueldo_bruto + bono - descuento);
+               <dd>$ @Sueldo_liq</dd>
+            }
 
 
         </dl>
