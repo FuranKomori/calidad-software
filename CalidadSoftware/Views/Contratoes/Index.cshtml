@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<CalidadSoftware.Models.Contrato>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Contratos";
 }
 
-<h2>Index</h2>
+<h2>Lista de contratos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
@@ -48,8 +48,8 @@
                 @Html.DisplayFor(modelItem => item.Empleado.rut_empleado)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id_contrato }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id_contrato })
+                @Html.ActionLink("Editar", "Edit", new { id = item.id_contrato }) |
+                @Html.ActionLink("Ver mas", "Details", new { id = item.id_contrato })
             </td>
         </tr>
     }

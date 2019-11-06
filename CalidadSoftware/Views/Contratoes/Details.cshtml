@@ -1,10 +1,10 @@
 ﻿@model CalidadSoftware.Models.Contrato
-
+@using CalidadSoftware.Providers;
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles";
 }
 
-<h2>Details</h2>
+<h2>Detalles</h2>
 
 <div>
     <h4>Contrato</h4>
@@ -54,35 +54,61 @@
             Valor Hora
         </dt>
 
-        <dd>
+        @*-----Valor Hora-----*@
+        @{
+            var query = (from c in Model.Empleado.Valor_Hora where c.id_empleado.Equals(Model.Empleado.rut_empleado) select new { c.valor_hora1, c.horas_trabajadas, }).FirstOrDefault();
+
+            if (query != null)
+            {
+                <dd>$ @query.valor_hora1</dd>
+
+            }
+            else
+            {
+                <dd>No definido</dd>
+            }
+        }
+
+        <dt>
+            Sueldo Bruto
+        </dt>
+        @{
+            int sueldo_bruto = query.horas_trabajadas * query.valor_hora1;
+            <dd>$ @sueldo_bruto</dd>
+        }
+
+        <dt>
+            Bonificación
+        </dt>
+            
+        @{
+             Sueldo Calculos = new Sueldo();
+             var bono = Calculos.Calc_Bonificacion(sueldo_bruto,0,Model.Empleado.experiencia,0);
+             <dd>$ @bono</dd>
+        }
+
+            <dt>
+                Descuento
+            </dt>
 
             @{
-                // int valor_hora = Model.Empleado.Valor_Hora.Select(x => x.id_empleado == 18256644);
-                //var res = products.select(x => x.Id).ToArray();
+                var descuento = Calculos.Calc_Descuento(query.horas_trabajadas * query.valor_hora1);
+                <dd>$ @descuento</dd>
+            }
 
+            <dt>
+                Sueldo Liquido
+            </dt>
 
-                var item2 = Model.Empleado.Valor_Hora.SingleOrDefault(x => x.id_empleado == 18256644);
-
-
-                var query = (from c in Model.Empleado.Valor_Hora where c.id_empleado.Equals(18256644) select new { c.valor_hora1 }).Single();
-
-
+                @{
+                    double Sueldo_liq = (sueldo_bruto + bono - descuento);
+                 <dd>$ @Sueldo_liq</dd>
                 }
 
-        
-            @query.valor_hora1
-          
 
-        </dd>
-
-
-
-
-
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_contrato }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.id_contrato }) |
+            @Html.ActionLink("Volver", "Index")
+        </p>
