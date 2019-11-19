@@ -25,47 +25,47 @@ namespace CalidadSoftware.Controllers
     {
         
 
-        private ApplicationUserManager _userManager;
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                if (_userManager == null && HttpContext == null)
-                {
-                    return new ApplicationUserManager(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(db));
-                }
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
+    //    private ApplicationUserManager _userManager;
+    //    public ApplicationUserManager UserManager
+    //    {
+    //        get
+    //        {
+    //            if (_userManager == null && HttpContext == null)
+    //            {
+    //                return new ApplicationUserManager(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(db));
+    //            }
+    //            return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+    //        }
+    //        private set
+    //        {
+    //            _userManager = value;
+    //        }
+    //    }
 
-            ApplicationDbContext context;
+    //        ApplicationDbContext context;
 
 
-        public usersController()
-        {
-            context = new ApplicationDbContext();
-        }
+    //    public usersController()
+    //    {
+    //        context = new ApplicationDbContext();
+    //    }
 
-        public usersController(ApplicationUserManager userManager)
-        {
-            UserManager = userManager;
-        }
+    //    public usersController(ApplicationUserManager userManager)
+    //    {
+    //        UserManager = userManager;
+    //    }
 
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
+    //    public ApplicationUserManager UserManager
+    //    {
+    //        get
+    //        {
+    //            return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+    //        }
+    //        private set
+    //        {
+    //            _userManager = value;
+    //        }
+    //    }
 
         private Database db = new Database();
 
@@ -94,41 +94,41 @@ namespace CalidadSoftware.Controllers
         [AllowAnonymous]
         public ActionResult Create()
         {
-            ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
+            //ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
             return View();
         }
 
         // POST: users/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [AllowAnonymous]
-        public async Task<ActionResult> Create([Bind(Include = "id_user,user,password,privilege_level")] users users)
-        {
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //[AllowAnonymous]
+        //public async Task<ActionResult> Create([Bind(Include = "id_user,user,password,privilege_level")] users users)
+        //{
 
-            if (ModelState.IsValid)
-            {
-                db.users.Add(users);
-                db.SaveChanges();
-                /*return RedirectToAction("Index");*/
-                var user = new ApplicationUser { UserName = users.user };
-                var result = await UserManager.CreateAsync(user, users.password);
-                if (result.Succeeded)
-                {
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.users.Add(users);
+        //        db.SaveChanges();
+        //        /*return RedirectToAction("Index");*/
+        //        var user = new ApplicationUser { UserName = users.user };
+        //        var result = await UserManager.CreateAsync(user, users.password);
+        //        if (result.Succeeded)
+        //        {
 
-                    //Assign Role to user Here 
-                    await this.UserManager.AddToRoleAsync(user.Id, users.Name);
-                    //Ends Here
+        //            //Assign Role to user Here 
+        //            await this.UserManager.AddToRoleAsync(user.Id, users.Name);
+        //            //Ends Here
                     
 
-                    return RedirectToAction("Index", "Home");
-                }
-            }
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //    }
 
-            ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
-            return View();
-        }
+        //    ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
+        //    return View();
+        //}
 
         // GET: users/Edit/5
         public ActionResult Edit(decimal id)
