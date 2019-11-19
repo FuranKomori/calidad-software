@@ -15,6 +15,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Database = CalidadSoftware.Models.Databases;
+using A11_RBS.Models;
 
 namespace CalidadSoftware.Controllers
 {
@@ -22,23 +23,49 @@ namespace CalidadSoftware.Controllers
 
     public class usersController : Controller
     {
-
-
-        public class ApplicationUser : IdentityUser
-        {
-        }
-
         
 
-        public UserManager<ApplicationUser> UserManager { get; private set; }
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                if (_userManager == null && HttpContext == null)
+                {
+                    return new ApplicationUserManager(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(db));
+                }
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
-        IdentityDbContext context;
+            ApplicationDbContext context;
+
 
         public usersController()
         {
-            context = new IdentityDbContext();
+            context = new ApplicationDbContext();
         }
 
+        public usersController(ApplicationUserManager userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         private Database db = new Database();
 
